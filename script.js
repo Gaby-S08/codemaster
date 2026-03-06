@@ -1,259 +1,261 @@
-// ========= CONTROLE DO MENU MOBILE ==========
+// Controle do  menu mobile
 const menuIcon = document.querySelector('#menu-icon');
 const navList = document.querySelector('.navlist');
 
 menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('bx-x');
     navList.classList.toggle('open');
-     
-    // Bloquear scroll quando menu aberto
+
+    // bloquear scroll quando menu aberto
     document.body.style.overflow = navList.classList.contains('open') ? 'hidden' : 'auto';
 });
 
-// Fechar menu ao clicar em links
+// fechar menu ao clicar em links
 document.querySelectorAll('.navlist a').forEach(link => {
-    link.addEventListener('click', () =>{
+    link.addEventListener('click', () => {
         menuIcon.classList.remove('bx-x');
         navList.classList.remove('open');
         document.body.style.overflow = 'auto';
     });
 });
 
-// Fechar menu ao rolar
-window.addEventListener('scroll', () =>{
-    if(navList.classList.contains('open')){
+// fechar menu ao rolar 
+window.addEventListener('scroll', () => {
+    if(navList.classList.contains('open')) {
         menuIcon.classList.remove('bx-x');
         navList.classList.remove('open');
         document.body.style.overflow = 'auto';
     }
 });
-// ================ NAVEGAÇÃO ATIVA =================
-// Seleciona todos os links de navegação
+// navegação ativa
+// seleciona todos os links de navegação
 const navLinks = document.querySelectorAll('.navlist a');
 
-//Função para adicionar a classe "active" ao link clicado
-function activeLink () {
-    navLinks.forEach(item => item.classList.remove('active'));//Remove a classe "active" de todos os links
-    this.classList.add('active');//add a classe "active" ao link clicado
+// funcao para adicionar a classe "active ao link clicado
+function activeLink() {
+    navLinks.forEach(item => item.classList.remove('active')); //remove a classe "active" de todos os links 
+    this.classList.add('active'); // adiciona a classe "active" ao link clicado
 }
 
-// Add um evento de clique a cada link de navegação
-navLinks.forEach(item => item.addEventListener('click',activeLink));
+// adiciona um evento de clique a cada link de navegação
+navLinks.forEach(item => item.addEventListener('click', activeLink));
 
-//======================= ALTERNAR MODO CLARO/ESCURO ============
-//Função para alternar entre os temas claro e escuro
+// alternar modo claro/escuro
+// função para alternar entre os temas claro e escuro
 function toggleMode() {
     const html = document.documentElement;
-    html.classList.toggle('light'); // Alterna a classe "light" no elemento HTML
+    html.classList.toggle('light'); //alternar a classe "light" no elemento html
 
-    //Salva o tema escolhido no localStorage
+    // salva o tema escolhido no localStorage
     const mode = html.classList.contains('light') ? 'light' : 'dark';
     localStorage.setItem('theme', mode);
 
-    //Atualiza a cor do texto do título
-    updateTextColor();
+    // atualiza a cor do texto do titulo
+    updatetextColor();
 }
 
-//Carrega o tema salvo no localStorage ao carregar a página
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme){
-    document.documentElement.classList.toggle('light', savedTheme === 'light');
+// carrega o tema salvo no localStorage ao carregar a pagina
+const savedtheme = localStorage.getItem('theme');
+if(savedtheme) {
+    document.documentElement.classList.toggle('light', savedtheme === 'light');
 }
 
-//================ANIMAÇÃO DO TÍTULO ===================
-//Seleciona o elemento do título e define variáveis para a animação
+// animação do titulo
+// seleciona o elemento do titulo e define variaveis para a animação
 const titleElement = document.querySelector('#name');
 const text = "CODEMASTER";
 let index = 0;
-let isTyping= true;
-let curretColor = document.documentElement.classList.contains('light') ? 'black' : '#fff';
-//Função para animar o texto do título (digitação e apagamento)
-function animateText() {
-    if (isTyping) {
-     if (index < text.length) {
-        titleElement.textContent = text.slice(0,index + 1); //Adiciona uma letra ao título
-        index++;
-     }  else {
-        isTyping = false; //Alterna para o modo de apagamento
-     }
+let isTyping = true;
+let currentColor = document.documentElement.classList.contains('light') ? 'black' : '#fff';
+
+// funcao para animar o texto do titulo (digitação e apagamento)
+function animateText(){
+    if(isTyping) {
+        if(index < text.length) {
+            titleElement.textContent = text.slice(0, index + 1); //adiciona uma letra ao titulo
+            index++;
+        } else{
+            isTyping = false; //alterna para o modo de apagamento 
+        }
     } else {
         if(index > 1) {
-            titleElement.textContent = text.slice(0,index - 1);// Remove uma letra do título
+            titleElement.textContent = text.slice(0, index - 1); //remove uma letra do titulo
             index--;
-        } else{
-            isTyping = true; //Alterna para o modo de digitação
-            //Alterna a cor do texto entre branco/preto e laranja
-            currentColor = currentColor === (document.documentElement.classList.contains
-        ('light') ? 'black' : '#fff') ? '#C94C16' : (document.documentElement.classList.contains('light') ? 'black' : '#fff');
+        } else {
+            isTyping = true; //alterna para o modo de digitação
+            //alterna a cor do texto entre branco/preto e laranja
+            currentColor = currentColor === (document.documentElement.classList.contains ('light') ? 'black' : '#fff') ? '#c94c16' : (document.documentElement.classList.contains ('light') ? 'black' : '#fff');
             titleElement.style.color = currentColor;
         }
     }
-    setTimeout(animateText,300); // Define um instervalo para a próxima animação
+    setTimeout(animateText, 300); //define um intervalo para a proxima animação
 }
 
-// Função para atualizar a cor do texto do título com base no tema
-function updateTextColor(){
-    curretColor = document.documentElement.classList.contains('light') ? ' black' : '#fff';
+//função para atualizar a cor do texto do titulo com base no tema 
+function updatetextColor(){
+    currentColor = document.documentElement.classList.contains('light') ? 'black' : '#fff';
     titleElement.style.color = currentColor;
 }
 
-//Inicia a animação do título ao carregar a página
+// inicia a animação do titulo ao carregar a pagina
 document.addEventListener('DOMContentLoaded', animateText);
-updateTextColor();
+updatetextColor();
 
-//========= ANIMAÇÃO DA SEÇÃO HOME ===========
-//Seleciona a seção home e aplica uma animação de fade-in
+// animação da seção home
+//seleciona a seção home e aplica uma animção de fade-in
 const homeSection = document.querySelector('#home');
 homeSection.style.opacity = '0';
 homeSection.style.transform = 'translateY(20px)';
-homeSection.style.transition = 'opacity 1s ease, transforn 1s ease';
+homeSection.style.transition = 'opacity 1s ease, transform 1s ease';
 
-setTimeout(()=> {
+setTimeout(() => {
     homeSection.style.opacity = '1';
     homeSection.style.transform = 'translateY(0)';
 }, 100);
 
-//===============ANIMAÇÃO DAS SEÇÕES =============================
-// Seleciona todas as seções e aplica animações de entrada
+// animação das seções
+//seleciona todas as seções e aplica animações de entrada
 const sections = document.querySelectorAll('section');
 
 sections.forEach((section, index) => {
     section.style.opacity = '0';
     section.style.transition = 'opacity 1s, transform 1s';
 
-    //Aplica diferentes transformações com base no índice da seção
-      if ( index !== 0){
-    if ( index === 1) section.style.transform = 'translateY(100px)';
-    else if (index === 2) section.style.transform = 'scale(0.8)';
-    else if (index === 3) section.style.transform = 'rotateY(90deg)';
-      }
+    //aplica diferentes transformações com base no indice da seção
+    if(index !== 0) {
+        if(index === 1) section.style.transform = 'translateY(100px)';
+        else if (index === 2) section.style.transform = 'scale(0.8)';
+        else if (index === 3) section.style.transform = 'rotateY(90deg)';
+    }
 });
 
-// Observer para animar as seções ao rolar a página
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry =>{
-        if (entry.isIntersecting){
+//observar para animar as seções ao rolar a pagina
+const observar = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'none';
         }
     });
 });
 
-//Observa cada seção para aplicar a animação
-sections.forEach((section) => observer.observe(section));
+//observa cada seção para aplicar a animação
+sections.forEach((section) => observar.observe(section));
 
-//================== BOTÃO DE VOLTAR AO TOPO =================
-//Adiciona um event de clique ao botão de voltar ao topo
+//botão de voltar ao topo
+//adiciona um evento de clique ao botão de voltar ao topo
 document.querySelector('.top a').addEventListener('click', (e) => {
     e.preventDefault();
-    window.scrollTo({top: 0, behavior: 'smooth'}); //Rola suavemente pata o topo da página
+    window.scrollTo({top: 0, behavior: 'smooth'}); //rola suavemente para o topo da pagina 
 });
 
-//=====================CARROSSEL DE PROJETOS=======================
-//Seleciona os elementos do carrossel
+// carrossel de projetos
+// seleciona os elementos do carrossel
 const carouselSlides = document.querySelector('.carousel-slides');
-const slides = document.querySelectorAll('.corousel-slide');
+const slides = document.querySelectorAll('.carousel-slide');
 const prevButton = document.querySelector('.carousel-button.prev');
 const nextButton = document.querySelector('.carousel-button.next');
 let currentSlide = 0;
 let autoSlideInterval;
 
-//Função para exibir o slide atual
-function showSlide(slideIndex){
-    slides.forEach(slide =>{
-        slides.classList.remove('active');
+// função para exibir o slide atual
+function showSlide(slideIndex) {
+    slides.forEach(slide => {
+        slide.classList.remove('active');
         slide.style.display = 'none';
     });
 
-    //Ajusta o índice do slide para garantir que ele esteja dentro dos limites
-    if (slideIndex < 0) currentSlide = slides.length - 1;
-    else if (slideIndex >= slides.length) currentSlide = 0 ;
+    // ajusta o indice do slide para garantir que ele esteja dento dos limites
+    if(slideIndex < 0) currentSlide = slides.length - 1;
+    else if (slideIndex >= slides.length) currentSlide = 0;
     else currentSlide = slideIndex;
 
-    //Exibe o slide atual
+    // exibeo slide atual
     slides[currentSlide].classList.add('active');
-    slides[currentSlide].slide.display = 'flex';
+    slides[currentSlide].style.display = 'flex';
     updateSlidePosition();
 }
 
-//Função para atualizar a posição do carrossel
-function updateSlidePosition(){
+//função para atualizar a posição do carrosel
+function updateSlidePosition() {
     const slideWidth = slides[0].offsetWidth;
-    carouselSlides.style.transform = `translateX(-${currentSlide * slideWidht}px`;
+    carouselSlides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
 }
 
-// Função para avançar para o próximo slide
-function nextSlide (){
-    showSlide (currentSlide + 1);
-    resetAutoSlide(); // Reinicia o intervalo de transição automática
+//funcao para avancar para o proximo slide
+function nextSlide() {
+    showSlide(currentSlide + 1);
+    resetAutoSlide(); //reiicia o intervalo de transição
 }
 
-// Função para voltar ao slide anterior
-function prevSlide (){
+//função para voltar ao slide anterior
+function prevSlide(){
     showSlide(currentSlide - 1);
-    resetAutoSlide(); //Reinicia o intervalo de transição automática
+    resetAutoSlide(); //reinicia o intervalo de transição
 }
 
-//Função para iniciar a transição automática dos slides
-function startAutoSlide (){
-    autoSlideInterval = setInterval(nextSlide, 5000); //Avança o slide a cada 5 segundos
+//função para iniciar a transição automarica dos slides
+function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 5000); //avanca o slide a cada 5 segundos
 }
 
-//Função para reiniciar a transição automática
-function resetAutoSlide(){
+//função para reniciar a transição automatica
+function resetAutoSlide() {
     clearInterval(autoSlideInterval);
-        startAutoSlide();
+    startAutoSlide();
 }
 
-//Adiciona eventos de clique aos botões de navegação do carrossel
+//adiciona eventos de clique aos botoes de navegaçao do carrossel
 nextButton.addEventListener('click', nextSlide);
 prevButton.addEventListener('click', prevSlide);
 
-//Inicializa o carrossel aocarregar a página
-window.addEventListener('load', () =>{
+//inicializa o carrossel ao carregar a pagina
+window.addEventListener('load', () => {
     showSlide(currentSlide);
     startAutoSlide();
 
-    //Atualiza a posição do carrossel ao redimensionar a janela
-    window.addEventListener('resize',()=>{
+    //atualiza a posicao do carrossel ao redimensionar a janela 
+    window.addEventListener('resize', () => {
         updateSlidePosition();
     });
 });
 
-// Pausa a transição automática ao passar o mouse sobre o carrossel
-carouselSlides.parentElement.addEventListener('mouseenter', () =>{
+//pausa a transição automatica ao passar o mouse sobre o carrossel 
+carouselSlides.parentElement.addEventListener('mouseenter', () => {
     clearInterval(autoSlideInterval);
 });
 
-//Retoma a transição automática ao remover o mouse do carrossel
+//retoma a transição automatica ao remover o mouse do carrossel
 carouselSlides.parentElement.addEventListener('mouseleave', startAutoSlide);
 
-//======================= FORMULÁRIO DE CONTATO =============
-// Seliciona o formulário de contato e a mensagem de agradecimento
+//formulario de contato
+//seleciona o formulario de contato e a mensahem de agradecimento
 const contactForm = document.getElementById('contactForm');
 const thankYouMessage = document.getElementById('thankYouMessage');
 
-// Adiciona um evento de envio ao formuláro
-contactForm.addEventListener('submit', (e) =>{
+//adiciona um evento de envio ao formulario
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    thankYouMessage.style.display = 'block'; // Exibe a mensagem de agradecimento
+    thankYouMessage.style.display = 'block'; //exibe a mensagem de agradecimento
 
-    // Envia os dados do formulário usando Fetch API
-    const formData = new FormData (contactForm);
+    //envia os dados do formulario usando fetch API
+    const formData = new FormData(contactForm);
     fetch(contactForm.action, {
         method: 'POST',
         body: formData,
-        headers: {'Accept' :'application/json'}
+        headers: { 'Accept' : 'application/json' }
     })
     .then(response => {
-        if (response.ok) {
-            setTimeout(()=> window.location.reload(),2000); //Recarrega a página após 2 segundos
+        if(response.ok) {
+            setTimeout(() => window.location.reload(), 2000); //recarrega a pagina apos 2 segundos
         } else {
-            alert('Erro ao enviar formulário. Tente novamente.');
+            alert('Erro ao enviar formulario. Tente novamento.');
         }
     })
-    .catch(()=> alert ('Erro na conexão.Tente novamente.'));
-});//animação da seção "sobre mim"
+    .catch(() => alert('Erro na conexão. Tente novamente'))
+})
+
+//animação da seção "sobre mim"
 //seleciona a seção "sobre mim"
 const aboutSection = document.querySelector('.about');
 
