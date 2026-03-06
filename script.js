@@ -181,3 +181,49 @@ function updateSlidePosition(){
     const slideWidth = slides[0].offsetWidth;
     carouselSlides.style.transform = `translateX(-${currentSlide * slideWidht}px`;
 }
+
+// Função para avançar para o próximo slide
+function nextSlide (){
+    showSlide (currentSlide + 1);
+    resetAutoSlide(); // Reinicia o intervalo de transição automática
+}
+
+// Função para voltar ao slide anterior
+function prevSlide (){
+    showSlide(currentSlide - 1);
+    resetAutoSlide(); //Reinicia o intervalo de transição automática
+}
+
+//Função para iniciar a transição automática dos slides
+function startAutoSlide (){
+    autoSlideInterval = setInterval(nextSlide, 5000); //Avança o slide a cada 5 segundos
+}
+
+//Função para reiniciar a transição automática
+function resetAutoSlide(){
+    clearInterval(autoSlideInterval);
+        startAutoSlide();
+}
+
+//Adiciona eventos de clique aos botões de navegação do carrossel
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', prevSlide);
+
+//Inicializa o carrossel aocarregar a página
+window.addEventListener('load', () =>{
+    showSlide(currentSlide);
+    startAutoSlide();
+
+    //Atualiza a posição do carrossel ao redimensionar a janela
+    window.addEventListener('resize',()=>{
+        updateSlidePosition();
+    });
+});
+
+// Pausa a transição automática ao passar o mouse sobre o carrossel
+carouselSlides.parentElement.addEventListener('mouseenter', () =>{
+    clearInterval(autoSlideInterval);
+});
+
+//Retoma a transição automática ao remover o mouse do carrossel
+carouselSlides.parentElement.addEventListener('mouseleave', startAutoSlide);
