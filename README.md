@@ -1,22 +1,54 @@
-# codemaster
--Recebi o HTML e CSS prontos.
--Algumas partes do site não estãp  com funcionamento como esperado.
--Para o site funcionar perfeitamente, utilizarei o java script para o site e botões realizar sua função desejada e codificada.
-- Uma das partes que o java irácorrigir e melhor é:
-°Sobre: que não está aparecendo conforme o esperado, ou seja, está em branco e sem personalização;
-°Meus Projetos: Que a seta onde passa as imagens ( carrossel)  não funciona normalmente;
-°Menu: o botão que serve para mudar a iluminação do site não funciona conforme o código;
--Esses itens irá funcionar perfeitamente no site, aplicando o java script no código.
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4C1D95,100:C77DFF&height=220&section=header&text=CoderMaster&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=35" />
+</p>
 
-Lista de tarefas:
-[x] 1.Menu mobile
-[x] 2.Navegação Ativa
-[x] 3.Alternar modo claro/escuro
-[x] 4.Animação do título
-[x] 5.Animação da seção home
-[x] 6.Animação da seções
-[x] 7.Botão de voltar ao topo
-[x] 8.Carrossel de projetos
-[x]  9.formulário de contato
-[x] 10.Animação da seção "Sobre mim"
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?color=C77DFF&size=26&center=true&vCenter=true&width=750&lines=Projeto+CoderMaster;Explorando+programação+na+prática;Construindo+soluções+inteligentes" />
+</p>
 
+---
+
+## 📌 Sobre o Projeto
+
+O **CoderMaster** é um projeto desenvolvido com o objetivo de aplicar conhecimentos em programação, organização de código e construção de interfaces modernas.
+
+A proposta é simular um ambiente prático de desenvolvimento, focando em boas práticas e evolução contínua.
+
+---
+
+## 🎯 Objetivos
+
+| Objetivo | Descrição |
+|--------|----------|
+| 💻 Prática | Aplicar conceitos de programação |
+| 🎨 Interface | Criar layouts modernos |
+| ⚡ Performance | Melhorar eficiência do código |
+| 🚀 Evolução | Desenvolver habilidades técnicas |
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,python&theme=dark" />
+</p>
+
+---
+
+## 🧩 Funcionalidades
+
+✨ Interface organizada  
+📱 Responsividade  
+⚙️ Estrutura de código limpa  
+🚀 Navegação simples e eficiente  
+
+---
+
+## 📂 Estrutura do Projeto
+
+```bash
+📁 codermaster
+ ┣ 📄 index.html
+ ┣ 📄 style.css
+ ┣ 📄 script.js
+ ┗ 📄 README.md
